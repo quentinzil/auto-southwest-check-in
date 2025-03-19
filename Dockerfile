@@ -1,12 +1,15 @@
-FROM python:3.12-rc-alpine
+FROM python:3.12-bullseye
+
+# Get some basics
+RUN mkdir /app
+RUN apt-get -y update
+RUN apt install chromium-driver
 
 WORKDIR /app
 
 # Define so the script knows not to download a new driver version, as
 # this Docker image already downloads a compatible chromedriver
-ENV AUTO_SOUTHWEST_CHECK_IN_DOCKER=1
-
-RUN apk add --update --no-cache chromium chromium-chromedriver xvfb xauth
+#ENV AUTO_SOUTHWEST_CHECK_IN_DOCKER=1
 
 RUN adduser -D auto-southwest-check-in -h /app
 RUN chown -R auto-southwest-check-in:auto-southwest-check-in /app
