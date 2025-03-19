@@ -3,7 +3,7 @@ FROM python:3.12-bullseye
 # Get some basics
 RUN mkdir /app
 RUN apt-get -y update
-RUN apt install chromium-driver
+RUN apt-get -y install chromium-driver
 
 WORKDIR /app
 
