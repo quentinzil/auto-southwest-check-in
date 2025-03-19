@@ -11,7 +11,7 @@ WORKDIR /app
 # this Docker image already downloads a compatible chromedriver
 #ENV AUTO_SOUTHWEST_CHECK_IN_DOCKER=1
 
-RUN adduser -D auto-southwest-check-in -h /app
+RUN adduser --disabled-password --no-create-home --home /app --gecos "" auto-southwest-check-in
 RUN chown -R auto-southwest-check-in:auto-southwest-check-in /app
 USER auto-southwest-check-in
 
